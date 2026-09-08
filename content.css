@@ -1,0 +1,12 @@
+.nberm-auto-lock-highlight {
+  outline: 3px solid #ff9800 !important;
+  background: rgba(255, 152, 0, 0.25) !important;
+}
+
+.nberm-auto-lock-picking {
+  cursor: crosshair !important;
+}
+
+.nberm-auto-lock-picking * {
+  cursor: crosshair !important;
+}

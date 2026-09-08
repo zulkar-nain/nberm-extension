@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "NBERM Auto Order Locker",
+  "version": "1.0.0",
+  "description": "Automatically locks the first unlocked order in the NBERM admin order list right after you search.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://nberm.com/*",
+    "https://www.nberm.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "NBERM Auto Locker"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://nberm.com/administrator/*",
+        "https://www.nberm.com/administrator/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

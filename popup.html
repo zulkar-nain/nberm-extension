@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NBERM Auto Locker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>NBERM Auto Order Locker</h1>
+
+  <label class="row">
+    <input type="checkbox" id="enabled">
+    Enable auto-lock
+  </label>
+
+  <label class="row">
+    <input type="checkbox" id="dryRun">
+    Dry run (only highlight unlocked orders, never click)
+  </label>
+
+  <div class="section">
+    <div class="section-title">Lock click target</div>
+    <div class="row small">Default: clicks the empty "Art" cell. If that doesn't lock orders on the real site, use Pick to select the exact clickable element.</div>
+    <div class="row">
+      <code id="selectorValue">default</code>
+    </div>
+    <div class="row">
+      <button id="pickBtn">Pick element on page</button>
+      <button id="clearSelectorBtn">Reset to default</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <button id="rescanBtn">Rescan current page now</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Activity log</div>
+    <ul id="log"></ul>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
