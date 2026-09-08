@@ -6,7 +6,8 @@
   "permissions": ["storage"],
   "host_permissions": [
     "https://nberm.com/*",
-    "https://www.nberm.com/*"
+    "https://www.nberm.com/*",
+    "https://raw.githubusercontent.com/*"
   ],
   "action": {
     "default_popup": "popup.html",

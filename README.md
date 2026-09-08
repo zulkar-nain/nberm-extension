@@ -54,6 +54,27 @@ cell itself. If locking doesn't actually happen on the live site:
 - **Activity log** — shows recent lock attempts and whether they were
   verified as successful.
 
+## Update system (no server needed)
+
+Since this is loaded unpacked (not from the Chrome Web Store), Chrome won't
+auto-update it silently. Instead, every time you open the popup it checks
+[`version.json`](version.json) on GitHub and shows a banner if a newer
+version is available.
+
+To ship an update:
+
+1. Bump `"version"` in both `manifest.json` and `version.json` (keep them in
+   sync) and describe the change in `version.json`'s `"notes"`.
+2. Commit and push to `main`.
+3. On your end: `git pull`, then in the popup click **Reload extension**
+   (calls `chrome.runtime.reload()`, which re-reads the files from disk) —
+   no need to visit `chrome://extensions` manually.
+
+If you ever want true silent/background auto-updates (not just a
+banner), the only real option is publishing the extension to the Chrome
+Web Store (can be unlisted/private) — Chrome then updates it automatically
+with no server of your own required.
+
 ## Notes
 
 - Only one order is auto-locked per page load/search, to avoid accidentally

@@ -64,3 +64,15 @@ code {
 #log li .action {
   font-weight: 600;
 }
+
+.update-banner {
+  background: #fff3e0;
+  border: 1px solid #ff9800;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.update-banner.hide {
+  display: none;
+}

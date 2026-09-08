@@ -8,6 +8,14 @@
 <body>
   <h1>NBERM Auto Order Locker</h1>
 
+  <div id="updateBanner" class="update-banner hide">
+    <div id="updateText"></div>
+    <div class="row">
+      <button id="updateViewBtn">View release</button>
+      <button id="updateReloadBtn">Reload extension</button>
+    </div>
+  </div>
+
   <label class="row">
     <input type="checkbox" id="enabled">
     Enable auto-lock
@@ -39,6 +47,7 @@
     <ul id="log"></ul>
   </div>
 
+  <script src="updateCheck.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

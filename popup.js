@@ -11,6 +11,10 @@ const pickBtn = document.getElementById("pickBtn");
 const clearSelectorBtn = document.getElementById("clearSelectorBtn");
 const rescanBtn = document.getElementById("rescanBtn");
 const logEl = document.getElementById("log");
+const updateBanner = document.getElementById("updateBanner");
+const updateText = document.getElementById("updateText");
+const updateViewBtn = document.getElementById("updateViewBtn");
+const updateReloadBtn = document.getElementById("updateReloadBtn");
 
 function getActiveTab() {
   return new Promise((resolve) => {
@@ -79,5 +83,19 @@ chrome.storage.onChanged.addListener((changes, area) => {
   }
 });
 
+async function runUpdateCheck() {
+  try {
+    const result = await checkForUpdate();
+    if (!result.updateAvailable) return;
+    updateText.textContent = `Update available: v${result.currentVersion} → v${result.latestVersion}. ${result.notes}`;
+    updateBanner.classList.remove("hide");
+    updateViewBtn.onclick = () => chrome.tabs.create({ url: result.releaseUrl || "https://github.com/zulkar-nain/nberm-extension" });
+    updateReloadBtn.onclick = () => chrome.runtime.reload();
+  } catch (err) {
+    console.warn("NBERM Auto Locker: update check failed", err);
+  }
+}
+
 loadSettings();
 loadLog();
+runUpdateCheck();
