@@ -11,9 +11,11 @@
   <div id="updateBanner" class="update-banner hide">
     <div id="updateText"></div>
     <div class="row">
+      <button id="updateAutoBtn">Update now (auto)</button>
       <button id="updateViewBtn">View release</button>
-      <button id="updateReloadBtn">Reload extension</button>
     </div>
+    <div class="row small">"Update now" downloads the latest files from GitHub straight into your
+      extension folder (asks you to pick that folder the first time), then reloads.</div>
   </div>
 
   <label class="row">
@@ -48,6 +50,7 @@
   </div>
 
   <script src="updateCheck.js"></script>
+  <script src="fsUpdate.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

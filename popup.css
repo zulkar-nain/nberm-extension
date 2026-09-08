@@ -76,3 +76,8 @@ code {
 .update-banner.hide {
   display: none;
 }
+
+#updateText {
+  white-space: pre-line;
+  margin-bottom: 4px;
+}

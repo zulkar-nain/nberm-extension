@@ -14,7 +14,7 @@ const logEl = document.getElementById("log");
 const updateBanner = document.getElementById("updateBanner");
 const updateText = document.getElementById("updateText");
 const updateViewBtn = document.getElementById("updateViewBtn");
-const updateReloadBtn = document.getElementById("updateReloadBtn");
+const updateAutoBtn = document.getElementById("updateAutoBtn");
 
 function getActiveTab() {
   return new Promise((resolve) => {
@@ -87,10 +87,21 @@ async function runUpdateCheck() {
   try {
     const result = await checkForUpdate();
     if (!result.updateAvailable) return;
-    updateText.textContent = `Update available: v${result.currentVersion} → v${result.latestVersion}. ${result.notes}`;
+    const baseText = `Update available: v${result.currentVersion} → v${result.latestVersion}. ${result.notes}`;
+    updateText.textContent = baseText;
     updateBanner.classList.remove("hide");
     updateViewBtn.onclick = () => chrome.tabs.create({ url: result.releaseUrl || "https://github.com/zulkar-nain/nberm-extension" });
-    updateReloadBtn.onclick = () => chrome.runtime.reload();
+    updateAutoBtn.onclick = async () => {
+      updateAutoBtn.disabled = true;
+      try {
+        await applyUpdate((status) => {
+          updateText.textContent = `${baseText}\n${status}`;
+        });
+      } catch (err) {
+        updateText.textContent = `${baseText}\nUpdate failed: ${err.message}`;
+        updateAutoBtn.disabled = false;
+      }
+    };
   } catch (err) {
     console.warn("NBERM Auto Locker: update check failed", err);
   }

@@ -66,14 +66,22 @@ To ship an update:
 1. Bump `"version"` in both `manifest.json` and `version.json` (keep them in
    sync) and describe the change in `version.json`'s `"notes"`.
 2. Commit and push to `main`.
-3. On your end: `git pull`, then in the popup click **Reload extension**
-   (calls `chrome.runtime.reload()`, which re-reads the files from disk) —
-   no need to visit `chrome://extensions` manually.
+3. On the machine running the extension, open the popup and click
+   **Update now (auto)**. This downloads the latest copy of every extension
+   file straight from GitHub (`raw.githubusercontent.com`) and overwrites the
+   local files in your unpacked extension folder using the browser's File
+   System Access API, then calls `chrome.runtime.reload()` — no `git pull`,
+   no visiting `chrome://extensions` manually.
+   - The **first** time you click it, Chrome will ask you to pick a folder —
+     choose the exact same folder you used for **Load unpacked**. That
+     permission is remembered for next time.
+   - If you'd rather update manually, you can still `git pull` yourself and
+     reload from `chrome://extensions`.
 
 If you ever want true silent/background auto-updates (not just a
-banner), the only real option is publishing the extension to the Chrome
-Web Store (can be unlisted/private) — Chrome then updates it automatically
-with no server of your own required.
+banner + one click), the only real option is publishing the extension to the
+Chrome Web Store (can be unlisted/private) — Chrome then updates it
+automatically with no server of your own required.
 
 ## Notes
 
