@@ -76,13 +76,15 @@
           if (hasAttemptedThisLoad) return; // only ever lock one order per page load
 
           hasAttemptedThisLoad = true;
-          const clickTarget = (cfg.autoLockCustomSelector && row.querySelector(cfg.autoLockCustomSelector)) || artCell;
+          // Locking happens by opening the order via its order-number link, not the Art cell itself.
+          const defaultTarget = row.querySelector("a.assignmentOrders") || artCell;
+          const clickTarget = (cfg.autoLockCustomSelector && row.querySelector(cfg.autoLockCustomSelector)) || defaultTarget;
           fireClick(clickTarget);
           log({
             action: "lock-attempt",
             order: getOrderLabel(row),
             rowId: row.id,
-            selectorUsed: cfg.autoLockCustomSelector || "default (Art cell)"
+            selectorUsed: cfg.autoLockCustomSelector || "default (order number link)"
           });
 
           // Confirm shortly after whether it actually locked, so failures are visible in the popup log.

@@ -28,19 +28,20 @@ as the page loads.
 
 ## Important: verify the click target on the real site
 
-Since detection was built from a saved copy of the page (the real site
-couldn't be reached directly), the default behavior clicks the empty **Art**
-cell itself. If locking doesn't actually happen on the live site:
+The default behavior clicks the order's number link (`a.assignmentOrders`,
+e.g. `W3813621A`) in the Order Number column, which is what actually opens
+and locks the order. If that ever stops working on the live site (e.g. after
+a site markup change):
 
 1. Open the popup and turn on **Dry run** first. This only highlights
    detected unlocked orders in orange without clicking anything — use it to
    confirm detection is correct before letting it click for real.
-2. If clicking the Art cell doesn't lock the order, click **Pick element on
-   page** in the popup, then click directly on the exact element/link that
-   normally locks an order (e.g. a small "claim" link or icon inside that
-   row). The extension records a selector and uses it from then on instead of
-   the default cell click.
-3. Click **Reset to default** any time to go back to clicking the Art cell.
+2. If clicking the order number link doesn't lock the order, click **Pick
+   element on page** in the popup, then click directly on the exact
+   element/link that normally locks an order. The extension records a
+   selector and uses it from then on instead of the default link click.
+3. Click **Reset to default** any time to go back to clicking the order
+   number link.
 
 ## Popup controls
 

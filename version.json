@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
-  "notes": "Added a keyboard shortcut (Ctrl+Shift+L, editable in chrome://extensions/shortcuts) to toggle auto-lock on/off, with a toolbar badge showing ON/OFF.",
+  "version": "1.1.1",
+  "notes": "Fix: auto-lock now clicks the order number link (a.assignmentOrders) instead of the Art cell, since that's the actual element that locks an order.",
   "releaseUrl": "https://github.com/zulkar-nain/nberm-extension/releases"
 }

@@ -26,7 +26,7 @@ function loadSettings() {
   chrome.storage.sync.get(DEFAULTS, (cfg) => {
     enabledEl.checked = cfg.autoLockEnabled;
     dryRunEl.checked = cfg.autoLockDryRun;
-    selectorValueEl.textContent = cfg.autoLockCustomSelector || "default (Art cell)";
+    selectorValueEl.textContent = cfg.autoLockCustomSelector || "default (order number link)";
   });
 }
 
@@ -76,7 +76,7 @@ rescanBtn.addEventListener("click", async () => {
 
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === "sync" && changes.autoLockCustomSelector) {
-    selectorValueEl.textContent = changes.autoLockCustomSelector.newValue || "default (Art cell)";
+    selectorValueEl.textContent = changes.autoLockCustomSelector.newValue || "default (order number link)";
   }
   if (area === "sync" && changes.autoLockEnabled) {
     enabledEl.checked = changes.autoLockEnabled.newValue;
