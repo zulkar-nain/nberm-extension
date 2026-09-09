@@ -15,6 +15,9 @@ const updateBanner = document.getElementById("updateBanner");
 const updateText = document.getElementById("updateText");
 const updateViewBtn = document.getElementById("updateViewBtn");
 const updateAutoBtn = document.getElementById("updateAutoBtn");
+const versionLabelEl = document.getElementById("versionLabel");
+
+versionLabelEl.textContent = `v${chrome.runtime.getManifest().version}`;
 
 function getActiveTab() {
   return new Promise((resolve) => {

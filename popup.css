@@ -11,6 +11,12 @@ h1 {
   margin: 0 0 10px;
 }
 
+.version-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: #888;
+}
+
 .row {
   display: flex;
   align-items: center;
