@@ -31,11 +31,11 @@
     return headers.findIndex((th) => th.textContent.trim().toLowerCase() === "art");
   }
 
-  // A locked order shows a "checked out" icon; an unlocked one is an empty cell.
+  // A locked order shows the "checked_out" icon; an unlocked one shows no such icon
+  // (it may still contain other icons, e.g. an attached-artwork picture icon).
   function isCellLocked(cell) {
     if (!cell) return true; // unknown state -> assume locked, never guess-click
-    if (cell.querySelector("img")) return true;
-    return cell.textContent.trim().length > 0;
+    return !!cell.querySelector('img[src*="checked_out"]');
   }
 
   function getOrderLabel(row) {

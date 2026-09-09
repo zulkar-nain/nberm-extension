@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NBERM Auto Order Locker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatically locks the first unlocked order in the NBERM admin order list right after you search.",
   "permissions": ["storage"],
   "host_permissions": [
