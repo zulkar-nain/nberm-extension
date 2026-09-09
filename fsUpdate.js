@@ -3,6 +3,7 @@
 const REPO_RAW_BASE = "https://raw.githubusercontent.com/zulkar-nain/nberm-extension/main/";
 const FILES_TO_SYNC = [
   "manifest.json",
+  "background.js",
   "content.js",
   "content.css",
   "popup.html",

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NBERM Auto Order Locker",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Automatically locks the first unlocked order in the NBERM admin order list right after you search.",
   "permissions": ["storage"],
   "host_permissions": [
@@ -12,6 +12,15 @@
   "action": {
     "default_popup": "popup.html",
     "default_title": "NBERM Auto Locker"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-auto-lock": {
+      "suggested_key": { "default": "Ctrl+Shift+L" },
+      "description": "Toggle NBERM auto-lock on/off"
+    }
   },
   "content_scripts": [
     {

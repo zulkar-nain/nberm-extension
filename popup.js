@@ -78,6 +78,9 @@ chrome.storage.onChanged.addListener((changes, area) => {
   if (area === "sync" && changes.autoLockCustomSelector) {
     selectorValueEl.textContent = changes.autoLockCustomSelector.newValue || "default (Art cell)";
   }
+  if (area === "sync" && changes.autoLockEnabled) {
+    enabledEl.checked = changes.autoLockEnabled.newValue;
+  }
   if (area === "local" && changes.activityLog) {
     loadLog();
   }
